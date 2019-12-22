@@ -8,11 +8,16 @@ resolvers ++= Seq(
   Resolver.sonatypeRepo("snapshots")
 )
 
+lazy val commonDeps = libraryDependencies ++= Seq(
+)
+
+
 lazy val zioDeps = libraryDependencies ++= Seq(
   "dev.zio" %% "zio"          % zioVersion,
   "dev.zio" %% "zio-test"     % zioVersion % "test",
   "dev.zio" %% "zio-test-sbt" % zioVersion % "test"
 )
+
 
 lazy val catsDeps = libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core"   % "2.1.0-RC1",
@@ -29,6 +34,7 @@ lazy val root = project
     scalacOptions ++= Seq(
       "-noindent"
     ),
+    commonDeps,
     catsDeps,
     libraryDependencies := libraryDependencies.value.map(_.withDottyCompat(scalaVersion.value)),
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
