@@ -9,15 +9,13 @@ resolvers ++= Seq(
 )
 
 lazy val commonDeps = libraryDependencies ++= Seq(
-)
-
+  )
 
 lazy val zioDeps = libraryDependencies ++= Seq(
   "dev.zio" %% "zio"          % zioVersion,
   "dev.zio" %% "zio-test"     % zioVersion % "test",
   "dev.zio" %% "zio-test-sbt" % zioVersion % "test"
 )
-
 
 lazy val catsDeps = libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core"   % "2.1.0-RC1",
@@ -27,12 +25,13 @@ lazy val catsDeps = libraryDependencies ++= Seq(
 lazy val root = project
   .in(file("."))
   .settings(
-    name := "dotty-top",
+    name := "dotty-cookbook",
     version := "0.0.1",
     scalaVersion := dottyVersion,
     crossScalaVersions := Seq(dottyVersion, scala212Version),
     scalacOptions ++= Seq(
-      "-noindent"
+      "-language:implicitConversions"
+      // "-noindent"
     ),
     commonDeps,
     catsDeps,
